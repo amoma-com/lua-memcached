@@ -47,23 +47,32 @@ local Memcached = {}
 ---Connect to a memcached server, returning a Memcached handle.
 -- @param host Defaults to localhost.
 -- @param port Defaults to 11211.
+-- @param timeout Connection timeout.   Defaults to 20 seconds
 -- @param defer_hook An optional function, called to defer, enabling
 -- non-blocking operation.
-function connect(host, port, defer_hook)
-   host, port = host or "localhost", port or 11211
+function connect(host, port, timeout, defer_hook)
+   host, port, timeout = host or "localhost", port or 11211, timeout or 20
 
    local m = setmetatable({ _host=host, _port=port,
-                            _defer = defer_hook},
+             _timeout = timeout, _defer = defer_hook},
                        {__index = Memcached })
-   m:connect()
+
+   local conn, err = m:connect()
+   if conn == nil then return nil, err end
    return m
 end
 
 
 ---(Re-)Connect to the memcached server.
 function Memcached:connect()
-   local conn, err = socket.connect(self._host, self._port)
-   if not conn then return false, err end
+   local conn, err = socket.tcp()
+   if not conn then return nil, err end
+
+   conn:settimeout(self._timeout)
+   local isok, err = conn:connect(self._host, self._port)
+
+   if isok == nil then return nil, err end
+
    if self._defer then conn:settimeout(0) end
    self._s = conn
    return conn

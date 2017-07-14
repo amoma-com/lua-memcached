@@ -14,7 +14,7 @@ if test_async then
 end
 
 function setup()
-   m = assert(memcached.connect("localhost", 11211, dh),
+   m = assert(memcached.connect("localhost", 11211, 1, dh),
               "Is the server running?")
    assert_true(m:flush_all(), "Flush failed")
 end

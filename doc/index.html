@@ -1,0 +1,786 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>memcached</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>memcached</code></h1>
+<p>Copyright (c) 2010 Scott Vokes <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#x3a;v&#111;&#x6b;&#101;&#x73;&#46;&#x73;&#64;&#x67;m&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;">&#x76;&#111;&#x6b;&#101;&#x73;&#46;&#x73;&#64;&#x67;m&#97;&#x69;&#108;&#x2e;&#99;&#x6f;m</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#connect">connect (host, port, timeout, defer_hook)</a></td>
+	<td class="summary">Connect to a memcached server, returning a Memcached handle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:connect">Memcached:connect ()</a></td>
+	<td class="summary">(Re-)Connect to the memcached server.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:send">Memcached:send (msg)</a></td>
+	<td class="summary">Send a command, asynchronously.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:receive">Memcached:receive (spec)</a></td>
+	<td class="summary">Read a response (a line of text, or spec bytes), asynchronously.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:send_recv">Memcached:send_recv (msg)</a></td>
+	<td class="summary">Send a command and return the response or (false, error).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:defer">Memcached:defer ()</a></td>
+	<td class="summary">Call the defer hook, if any.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:is_async">Memcached:is_async ()</a></td>
+	<td class="summary">Is the connection running asynchronously?</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:set">Memcached:set (key, data, exptime, flags, noreply)</a></td>
+	<td class="summary">Set a key to a value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:add">Memcached:add (key, data, exptime, flags, noreply)</a></td>
+	<td class="summary">Add a value to a non-existing key.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:replace">Memcached:replace (key, data, exptime, flags, noreply)</a></td>
+	<td class="summary">Replace a key's value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:append">Memcached:append (key, data, exptime, flags, noreply)</a></td>
+	<td class="summary">Append to a key's value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:prepend">Memcached:prepend (key, data, exptime, flags, noreply)</a></td>
+	<td class="summary">Prepend to a key's value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:cas">Memcached:cas (key, data, cas_id, flags, exptime, noreply)</a></td>
+	<td class="summary">Modify a key's value if the cas ID (from gets) is still current.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:get">Memcached:get (keys)</a></td>
+	<td class="summary">Get value and flags for one or more keys.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:gets">Memcached:gets (keys)</a></td>
+	<td class="summary">Get one or more keys and unique CAS IDs for each.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:delete">Memcached:delete (key, noreply)</a></td>
+	<td class="summary">Delete a key.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:flush_all">Memcached:flush_all ()</a></td>
+	<td class="summary">Flush all keys.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:incr">Memcached:incr (key, val, noreply)</a></td>
+	<td class="summary">Increment key by an integer.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:decr">Memcached:decr (key, val, noreply)</a></td>
+	<td class="summary">Decrement key by an integer.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:stats">Memcached:stats ()</a></td>
+	<td class="summary">Get a table with info about the memcached server.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:version">Memcached:version ()</a></td>
+	<td class="summary">Get server version.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Memcached:quit">Memcached:quit ()</a></td>
+	<td class="summary">Close the connection to the server.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "connect"></a>
+    <strong>connect (host, port, timeout, defer_hook)</strong>
+    </dt>
+    <dd>
+    Connect to a memcached server, returning a Memcached handle.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">host</span>
+         Defaults to localhost.
+        </li>
+        <li><span class="parameter">port</span>
+         Defaults to 11211.
+        </li>
+        <li><span class="parameter">timeout</span>
+         Connection timeout.   Defaults to 20 seconds
+        </li>
+        <li><span class="parameter">defer_hook</span>
+         An optional function, called to defer, enabling
+ non-blocking operation.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:connect"></a>
+    <strong>Memcached:connect ()</strong>
+    </dt>
+    <dd>
+    (Re-)Connect to the memcached server.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:send"></a>
+    <strong>Memcached:send (msg)</strong>
+    </dt>
+    <dd>
+    Send a command, asynchronously.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:receive"></a>
+    <strong>Memcached:receive (spec)</strong>
+    </dt>
+    <dd>
+    Read a response (a line of text, or spec bytes), asynchronously.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">spec</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:send_recv"></a>
+    <strong>Memcached:send_recv (msg)</strong>
+    </dt>
+    <dd>
+    Send a command and return the response or (false, error).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:defer"></a>
+    <strong>Memcached:defer ()</strong>
+    </dt>
+    <dd>
+    Call the defer hook, if any.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:is_async"></a>
+    <strong>Memcached:is_async ()</strong>
+    </dt>
+    <dd>
+    Is the connection running asynchronously?
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:set"></a>
+    <strong>Memcached:set (key, data, exptime, flags, noreply)</strong>
+    </dt>
+    <dd>
+    Set a key to a value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+         A key, which cannot have whitespace or control characters
+ and must be less than 250 chars long.
+        </li>
+        <li><span class="parameter">data</span>
+         Value to associate with the key. Must be under 1 megabyte.
+        </li>
+        <li><span class="parameter">exptime</span>
+         Optional expiration time, in seconds.
+        </li>
+        <li><span class="parameter">flags</span>
+         Optional 16-bit int to associate with the key,
+ for bit flags.
+        </li>
+        <li><span class="parameter">noreply</span>
+         Do not expect a reply, just set it.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:add"></a>
+    <strong>Memcached:add (key, data, exptime, flags, noreply)</strong>
+    </dt>
+    <dd>
+    Add a value to a non-existing key.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+
+
+
+        </li>
+        <li><span class="parameter">data</span>
+
+
+
+        </li>
+        <li><span class="parameter">exptime</span>
+
+
+
+        </li>
+        <li><span class="parameter">flags</span>
+
+
+
+        </li>
+        <li><span class="parameter">noreply</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#Memcached:set">set</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:replace"></a>
+    <strong>Memcached:replace (key, data, exptime, flags, noreply)</strong>
+    </dt>
+    <dd>
+    Replace a key's value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+
+
+
+        </li>
+        <li><span class="parameter">data</span>
+
+
+
+        </li>
+        <li><span class="parameter">exptime</span>
+
+
+
+        </li>
+        <li><span class="parameter">flags</span>
+
+
+
+        </li>
+        <li><span class="parameter">noreply</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#Memcached:set">set</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:append"></a>
+    <strong>Memcached:append (key, data, exptime, flags, noreply)</strong>
+    </dt>
+    <dd>
+    Append to a key's value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+
+
+
+        </li>
+        <li><span class="parameter">data</span>
+
+
+
+        </li>
+        <li><span class="parameter">exptime</span>
+
+
+
+        </li>
+        <li><span class="parameter">flags</span>
+
+
+
+        </li>
+        <li><span class="parameter">noreply</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#Memcached:set">set</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:prepend"></a>
+    <strong>Memcached:prepend (key, data, exptime, flags, noreply)</strong>
+    </dt>
+    <dd>
+    Prepend to a key's value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+
+
+
+        </li>
+        <li><span class="parameter">data</span>
+
+
+
+        </li>
+        <li><span class="parameter">exptime</span>
+
+
+
+        </li>
+        <li><span class="parameter">flags</span>
+
+
+
+        </li>
+        <li><span class="parameter">noreply</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#Memcached:set">set</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:cas"></a>
+    <strong>Memcached:cas (key, data, cas_id, flags, exptime, noreply)</strong>
+    </dt>
+    <dd>
+    Modify a key's value if the cas ID (from gets) is still current.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+
+
+
+        </li>
+        <li><span class="parameter">data</span>
+
+
+
+        </li>
+        <li><span class="parameter">cas_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">flags</span>
+
+
+
+        </li>
+        <li><span class="parameter">exptime</span>
+
+
+
+        </li>
+        <li><span class="parameter">noreply</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <li><a href="index.html#Memcached:gets">gets</a></li>
+         <li><a href="index.html#Memcached:set">set</a></li>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:get"></a>
+    <strong>Memcached:get (keys)</strong>
+    </dt>
+    <dd>
+    Get value and flags for one or more keys.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keys</span>
+         Key or {"list", "of", "keys"}.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        For one key, returns (value, flags). For a list of keys,
+ returns a { key1={data="data", flags=f }, key2=...} table.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:gets"></a>
+    <strong>Memcached:gets (keys)</strong>
+    </dt>
+    <dd>
+    Get one or more keys and unique CAS IDs for each.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keys</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="index.html#Memcached:get">get</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:delete"></a>
+    <strong>Memcached:delete (key, noreply)</strong>
+    </dt>
+    <dd>
+    Delete a key.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+
+
+
+        </li>
+        <li><span class="parameter">noreply</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:flush_all"></a>
+    <strong>Memcached:flush_all ()</strong>
+    </dt>
+    <dd>
+    Flush all keys.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:incr"></a>
+    <strong>Memcached:incr (key, val, noreply)</strong>
+    </dt>
+    <dd>
+    Increment key by an integer.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+
+
+
+        </li>
+        <li><span class="parameter">val</span>
+
+
+
+        </li>
+        <li><span class="parameter">noreply</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:decr"></a>
+    <strong>Memcached:decr (key, val, noreply)</strong>
+    </dt>
+    <dd>
+    Decrement key by an integer.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+
+
+
+        </li>
+        <li><span class="parameter">val</span>
+
+
+
+        </li>
+        <li><span class="parameter">noreply</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:stats"></a>
+    <strong>Memcached:stats ()</strong>
+    </dt>
+    <dd>
+    Get a table with info about the memcached server.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:version"></a>
+    <strong>Memcached:version ()</strong>
+    </dt>
+    <dd>
+    Get server version.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Memcached:quit"></a>
+    <strong>Memcached:quit ()</strong>
+    </dt>
+    <dd>
+    Close the connection to the server.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-07-14 16:51:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
